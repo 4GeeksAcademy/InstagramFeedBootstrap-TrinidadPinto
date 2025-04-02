@@ -1,0 +1,79 @@
+/* Layout de cuadrícula por defecto */
+#grid-view:checked ~ #postContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+}
+
+#grid-view:checked ~ #postContainer .post {
+    width: 100%; /* Controla el tamaño de cada post en la cuadrícula */
+    aspect-ratio: 1 / 1; /* Hace que el contenedor sea perfectamente cuadrado */
+    overflow: hidden; /* Asegura que nada sobresalga */
+    border: none; /* Sin bordes en los posts */
+    padding: 0; /* Evita espacios internos */
+    margin: 0;
+    border: none;
+}
+
+/* Estilo para las imágenes en el modo cuadrícula */
+#grid-view:checked ~ #postContainer .post img {
+    width: 100%;      /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%;     /* La imagen tiene la misma altura que el contenedor */
+    object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+    border-radius: 0;
+}
+/* Ocultar título, fecha y descripción en la vista de cuadrícula */
+#grid-view:checked ~ #postContainer .post .titulo-fecha,
+#grid-view:checked ~ #postContainer .post .descripcion {
+    display: none;  /* Ocultamos título, fecha y descripción */
+}
+
+/* Layout de lista */
+#list-view:checked ~ #postContainer {
+    display: block;
+}
+
+#list-view:checked ~ #postContainer .post {
+    width: 60%;
+    margin: 0 auto 20px auto; /* Centrar el post con margen abajo */
+    padding: 0;
+    padding-top: 10px;
+}
+
+/* Estilo general de los posts */
+.post {
+    box-sizing: content-box;
+    padding: 0;
+    border: 1px solid lightgrey;
+    text-align: center;
+}
+
+.titulo-fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Quitar fondo y bordes de los botones */
+.btn-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+#grid-view:checked ~ #layout-toggle label[for="grid-view"],
+#list-view:checked ~ #layout-toggle label[for="list-view"] {
+    color: #007bff; /* Azul cuando está seleccionado */
+}
+
+/* Estilos para el modo en línea (lista) */
+#list-view:checked ~ #postContainer .post img {
+    width: 100%;      /* La imagen ocupa todo el ancho del contenedor */
+    height: auto;     /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+}
+#list-view:checked ~ #postContainer .post .descripcion {
+    text-align: left;
+    padding: 10px; /* Espacio después de la imagen */
+}
